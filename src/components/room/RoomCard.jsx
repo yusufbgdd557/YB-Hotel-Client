@@ -12,13 +12,13 @@ const RoomCard = ({ room }) => {
 								variant="top"
 								src={`data:image/png;base64, ${room.photo}`}
 								alt="Room Photo"
-								style={{ width: "100%", maxWidth: "200px", height: "auto" }}
+								style={{ width: "100%", maxWidth: "200px", height: "auto" , borderRadius:"8px", border: "3px solid rgb(169, 77, 123)"}}
 							/>
 						</Link>
 					</div>
 					<div className="flex-grow-1 ml-3 px-5">
 						<Card.Title className="hotel-color">{room.roomType}</Card.Title>
-						<Card.Title className="room-price">{room.roomPrice} / night</Card.Title>
+						<Card.Title className="room-price">{room.roomPrice} / Night</Card.Title>
 						<Card.Text>Some room information goes here for the guest to read through</Card.Text>
 					</div>
 					<div className="flex-shrink-0 mt-3">

@@ -10,7 +10,7 @@ const Home = () => {
 		<section>
 			<MainHeader />
 			<div className="container"> 
-        <RoomCarousel />
+        		<RoomCarousel />
 				<Parallax />    
 				<HotelService />
 				<Parallax />    

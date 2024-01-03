@@ -19,8 +19,8 @@ const HotelService = () => {
 
 				<Row className="mt-4">
 					<h4 className="text-center">
-						Services at <span className="hotel-color"> YB - </span>Hotel
-						<span className="gap-2">
+						Services at <span className="hotel-color"> YB - </span> Hotel {" "}
+						<span className="gap-4">
 							<FaClock className="ml-5" /> 24-Hour Front Desk
 						</span>
 					</h4>
@@ -62,7 +62,7 @@ const HotelService = () => {
 						<Card>
 							<Card.Body>
 								<Card.Title className="hotel-color">
-									<FaCocktail /> Mini-bar
+									<FaCocktail /> Mini-Bar
 								</Card.Title>
 								<Card.Text>Enjoy a refreshing drink or snack from our in-room mini-bar.</Card.Text>
 							</Card.Body>
@@ -82,7 +82,7 @@ const HotelService = () => {
 						<Card>
 							<Card.Body>
 								<Card.Title className="hotel-color">
-									<FaSnowflake /> Air conditioning
+									<FaSnowflake /> Air Conditioning
 								</Card.Title>
 								<Card.Text>Stay cool and comfortable with our air conditioning system.</Card.Text>
 							</Card.Body>

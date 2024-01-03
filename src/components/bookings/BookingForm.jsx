@@ -19,8 +19,8 @@ const currentUser = localStorage.getItem("userId")
 		guestEmail: currentUser,
 		checkInDate: "",
 		checkOutDate: "",
-		numOfAdults: "",
-		numOfChildren: ""
+		numberOfAdults: "",
+		numberOfChildren: ""
 	})
 
     const[roomInfo, setRoomInfo] = useState({
@@ -61,8 +61,8 @@ const currentUser = localStorage.getItem("userId")
 	}
 
 	const isGuestCountValid = () => {
-		const adultCount = parseInt(booking.numOfAdults)
-		const childrenCount = parseInt(booking.numOfChildren)
+		const adultCount = parseInt(booking.numberOfAdults)
+		const childrenCount = parseInt(booking.numberOfChildren)
 		const totalCount = adultCount + childrenCount
 		return totalCount >= 1 && adultCount >= 1
 	}
@@ -111,7 +111,7 @@ const currentUser = localStorage.getItem("userId")
 							<Form noValidate isValidated={isValidated} onSubmit={handleSubmit}>
 								<Form.Group>
 									<Form.Label htmlFor="guestFullName" className="hotel-color">
-										Full Name :
+										Full Name
 									</Form.Label>
 									<FormControl
 										required
@@ -129,7 +129,7 @@ const currentUser = localStorage.getItem("userId")
 
 								<Form.Group>
 									<Form.Label htmlFor="guestEmail" className="hotel-color">
-										Email :
+										Email
 									</Form.Label>
 									<FormControl
 										required
@@ -150,7 +150,7 @@ const currentUser = localStorage.getItem("userId")
 									<div className="row">
 										<div className="col-6">
 											<Form.Label htmlFor="checkInDate" className="hotel-color">
-												Check-In Date :
+												Check-In Date 
 											</Form.Label>
 											<FormControl
 												required
@@ -193,15 +193,15 @@ const currentUser = localStorage.getItem("userId")
 									<legend>Number of Guest</legend>
 									<div className="row">
 										<div className="col-6">
-											<Form.Label htmlFor="numOfAdults" className="hotel-color">
-												Adults :
+											<Form.Label htmlFor="numberOfAdults" className="hotel-color">
+												Adults
 											</Form.Label>
 											<FormControl
 												required
 												type="number"
-												id="numOfAdults"
-												name="numOfAdults"
-												value={booking.numOfAdults}
+												id="numberOfAdults"
+												name="numberOfAdults"
+												value={booking.numberOfAdults}
 												min={1}
 												placeholder="0"
 												onChange={handleInputChange}
@@ -211,15 +211,15 @@ const currentUser = localStorage.getItem("userId")
 											</Form.Control.Feedback>
 										</div>
 										<div className="col-6">
-											<Form.Label htmlFor="numOfChildren" className="hotel-color">
-												Children :
+											<Form.Label htmlFor="numberOfChildren" className="hotel-color">
+												Children
 											</Form.Label>
 											<FormControl
 												required
 												type="number"
-												id="numOfChildren"
-												name="numOfChildren"
-												value={booking.numOfChildren}
+												id="numberOfChildren"
+												name="numberOfChildren"
+												value={booking.numberOfChildren}
 												placeholder="0"
 												onChange={handleInputChange}
 											/>

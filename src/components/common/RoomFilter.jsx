@@ -1,46 +1,88 @@
-import React, { useState } from "react"
+// import React, { useState } from "react"
+
+// const RoomFilter = ({ data, setFilteredData }) => {
+// 	const [filter, setFilter] = useState("")
+
+// 	const handleSelectChange = (e) => {
+// 		const selectedType = e.target.value
+// 		setFilter(selectedType)
+
+// 		const filteredRooms = data.filter((room) =>
+// 			room.roomType.toLowerCase().includes(selectedType.toLowerCase())
+// 		)
+// 		setFilteredData(filteredRooms)
+// 	}
+
+// 	const clearFilter = () => {
+// 		setFilter("")
+// 		setFilteredData(data)
+// 	}
+
+// 	const roomTypes = [...new Set(data.map((room) => room.roomType))]
+
+// 	return (
+// 		<div className="input-group mb-3">
+// 			<span className="input-group-text" id="room-type-filter" style={{ fontWeight: 'bold' }}>
+// 				Filter Rooms By Type
+// 			</span>
+// 			<select
+// 				className="form-select"
+// 				aria-label="romm type filter"
+// 				value={filter}
+// 				onChange={handleSelectChange}>
+// 				<option value="">Select a room type to filter...</option>
+// 				{roomTypes.map((type, index) => (
+// 					<option key={index} value={String(type)}>
+// 						{String(type)}
+// 					</option>
+// 				))}
+// 			</select>
+// 			<button className="btn btn-hotel" type="button" onClick={clearFilter}>
+// 				Clear Filter
+// 			</button>
+// 		</div>
+// 	)
+// }
+// export default RoomFilter
+
+
+import React, { useState } from "react";
 
 const RoomFilter = ({ data, setFilteredData }) => {
-	const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("");
 
-	const handleSelectChange = (e) => {
-		const selectedType = e.target.value
-		setFilter(selectedType)
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setFilter(inputValue);
 
-		const filteredRooms = data.filter((room) =>
-			room.roomType.toLowerCase().includes(selectedType.toLowerCase())
-		)
-		setFilteredData(filteredRooms)
-	}
+    const filteredRooms = data.filter((room) =>
+      room.roomType.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setFilteredData(filteredRooms);
+  };
 
-	const clearFilter = () => {
-		setFilter("")
-		setFilteredData(data)
-	}
+  const clearFilter = () => {
+    setFilter("");
+    setFilteredData(data);
+  };
 
-	const roomTypes = [...new Set(data.map((room) => room.roomType))]
+  return (
+    <div className="input-group mb-3">
+      <span className="input-group-text" id="room-type-filter" style={{ fontWeight: 'bold' }}>
+        Filter Rooms
+      </span>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Enter a keyword to filter rooms..."
+        value={filter}
+        onChange={handleInputChange}
+      />
+      <button className="btn btn-hotel" type="button" onClick={clearFilter}>
+        Clear Filter
+      </button>
+    </div>
+  );
+};
 
-	return (
-		<div className="input-group mb-3">
-			<span className="input-group-text" id="room-type-filter" style={{ fontWeight: 'bold' }}>
-				Filter Rooms By Type
-			</span>
-			<select
-				className="form-select"
-				aria-label="romm type filter"
-				value={filter}
-				onChange={handleSelectChange}>
-				<option value="">Select a room type to filter...</option>
-				{roomTypes.map((type, index) => (
-					<option key={index} value={String(type)}>
-						{String(type)}
-					</option>
-				))}
-			</select>
-			<button className="btn btn-hotel" type="button" onClick={clearFilter}>
-				Clear Filter
-			</button>
-		</div>
-	)
-}
-export default RoomFilter
+export default RoomFilter;

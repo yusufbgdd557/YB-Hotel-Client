@@ -30,12 +30,12 @@ const RoomCarousel = () => {
 
 	return (
 		<section className="bg-light mb-5 mt-5 shadow">
-			<Link to={"/browse-all-rooms"} className="hote-color text-center">
+			<Link to={"/browse-all-rooms"} className="hotel-color text-center">
 				Browse All Rooms
 			</Link>
-
+		
 			<Container>
-				<Carousel indicators={false}>
+				<Carousel indicators={false} controls={false} wrap={true}>
 					{[...Array(Math.ceil(rooms.length / 4))].map((_, index) => (
 						<Carousel.Item key={index}>
 							<Row>
@@ -48,12 +48,12 @@ const RoomCarousel = () => {
 													src={`data:image/png;base64, ${room.photo}`}
 													alt="Room Photo"
 													className="w-100"
-													style={{ height: "200px" }}
+													style={{ aspectRatio: 4/3, borderRadius:"8px", border: "3px solid rgb(169, 77, 123)"}}
 												/>
 											</Link>
 											<Card.Body>
 												<Card.Title className="hotel-color">{room.roomType}</Card.Title>
-												<Card.Title className="room-price">{room.roomPrice}$/night</Card.Title>
+												<Card.Title className="room-price">{room.roomPrice}$/Night</Card.Title>
 												<div className="flex-shrink-0">
 													<Link to={`/book-room/${room.id}`} className="btn btn-hotel btn-sm">
 														Book Now
