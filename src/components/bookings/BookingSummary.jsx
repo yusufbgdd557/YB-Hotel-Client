@@ -10,7 +10,7 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
 	const [isBookingConfirmed, setIsBookingConfirmed] = useState(false)
 	const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 	const navigate = useNavigate()
-	
+
 	const handleConfirmBooking = () => {
 		setIsProcessingPayment(true)
 		setTimeout(() => {
@@ -30,38 +30,38 @@ const BookingSummary = ({ booking, payment, isFormValid, onConfirm }) => {
 	return (
 		<div className="row">
 			<div className="col-md-6"></div>
-			<div className="card card-body mt-5">
+			<div className="card card-body mt-5" style={{ textAlign: "left" }}> {/*Listed card items to left*/}
 				<h4 className="card-title hotel-color">Reservation Summary</h4>
 				<p>
 					<strong>Name :</strong> {booking.guestFullName}
 				</p>
 				<p>
-				<strong> Email : </strong>{booking.guestEmail}
+					<strong> Email : </strong>{booking.guestEmail}
 				</p>
 				<p>
-				<strong> Check-in Date : </strong> {moment(booking.checkInDate).format("MMM Do YYYY")}
+					<strong> Check-in Date : </strong> {moment(booking.checkInDate).format("MMM Do YYYY")}
 				</p>
 				<p>
-				<strong> Check-out Date : </strong> {moment(booking.checkOutDate).format("MMM Do YYYY")}
+					<strong> Check-out Date : </strong> {moment(booking.checkOutDate).format("MMM Do YYYY")}
 				</p>
 				<p>
-				<strong> Number of Days Booked : </strong> {numberOfDays}
+					<strong> Number of Days Booked : </strong> {numberOfDays}
 				</p>
 
 				<div>
 					<h5 className="hotel-color">Number of Guest</h5>
 					<strong>
 						Adult{booking.numberOfAdults > 1 ? "s" : ""} : </strong> {booking.numberOfAdults}
-					
-					
-						<p> <strong>Children : </strong>{booking.numberOfChildren}</p>
-					
+
+
+					<p> <strong>Children : </strong>{booking.numberOfChildren}</p>
+
 				</div>
 
 				{payment > 0 ? (
 					<>
 						<p>
-						<strong>Total Payment : </strong> ${payment}
+							<strong>Total Payment : </strong> ${payment}
 						</p>
 
 						{isFormValid && !isBookingConfirmed ? (

@@ -12,7 +12,7 @@ const BookingForm = () => {
 	const [errorMessage, setErrorMessage] = useState("")
 	const [roomPrice, setRoomPrice] = useState(0)
 
-const currentUser = localStorage.getItem("userId")
+	const currentUser = localStorage.getItem("userId")
 
 	const [booking, setBooking] = useState({
 		guestFullName: "",
@@ -23,11 +23,11 @@ const currentUser = localStorage.getItem("userId")
 		numberOfChildren: ""
 	})
 
-    const[roomInfo, setRoomInfo] = useState({
-        photo: "",
-        roomType: "",
-        roomPrice:""
-    })
+	const [roomInfo, setRoomInfo] = useState({
+		photo: "",
+		roomType: "",
+		roomPrice: ""
+	})
 
 	const { roomId } = useParams()
 	const navigate = useNavigate()
@@ -55,9 +55,12 @@ const currentUser = localStorage.getItem("userId")
 	const calculatePayment = () => {
 		const checkInDate = moment(booking.checkInDate)
 		const checkOutDate = moment(booking.checkOutDate)
+		const adultCount = parseInt(booking.numberOfAdults)
+		const childrenCount = parseInt(booking.numberOfChildren)
+		const totalCount = adultCount + childrenCount
 		const diffInDays = checkOutDate.diff(checkInDate, "days")
 		const price = roomPrice ? roomPrice : 0
-		return diffInDays * price
+		return diffInDays * price * totalCount
 	}
 
 	const isGuestCountValid = () => {
@@ -108,7 +111,7 @@ const currentUser = localStorage.getItem("userId")
 						<div className="card card-body mt-5">
 							<h4 className="card-title">Reserve Room</h4>
 
-							<Form noValidate isValidated={isValidated} onSubmit={handleSubmit}>
+							<Form isValidated={isValidated} onSubmit={handleSubmit}>
 								<Form.Group>
 									<Form.Label htmlFor="guestFullName" className="hotel-color">
 										Full Name
@@ -150,7 +153,7 @@ const currentUser = localStorage.getItem("userId")
 									<div className="row">
 										<div className="col-6">
 											<Form.Label htmlFor="checkInDate" className="hotel-color">
-												Check-In Date 
+												Check-In Date
 											</Form.Label>
 											<FormControl
 												required
@@ -220,12 +223,13 @@ const currentUser = localStorage.getItem("userId")
 												id="numberOfChildren"
 												name="numberOfChildren"
 												value={booking.numberOfChildren}
+												min={0}
 												placeholder="0"
 												onChange={handleInputChange}
 											/>
-											{/* <Form.Control.Feedback type="invalid">
-												Select 0 if no children
-											</Form.Control.Feedback> */}
+											<Form.Control.Feedback type="invalid">
+												If no children select 0
+											</Form.Control.Feedback>
 										</div>
 									</div>
 								</fieldset>
@@ -239,7 +243,7 @@ const currentUser = localStorage.getItem("userId")
 						</div>
 					</div>
 
-					<div className="col-md-4">
+					<div className="col-md-6">
 						{isSubmitted && (
 							<BookingSummary
 								booking={booking}

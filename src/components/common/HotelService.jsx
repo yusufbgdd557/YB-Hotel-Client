@@ -21,7 +21,7 @@ const HotelService = () => {
 					<h4 className="text-center">
 						Services at <span className="hotel-color"> YB - </span> Hotel {" "}
 						<span className="gap-4">
-							<FaClock className="ml-5" /> 24-Hour Front Desk
+							<FaClock className="ml-5 mb-1" /> 24-Hour Front Desk
 						</span>
 					</h4>
 				</Row>
@@ -32,7 +32,7 @@ const HotelService = () => {
 						<Card>
 							<Card.Body>
 								<Card.Title className="hotel-color">
-									<FaWifi /> WiFi
+									<FaWifi /> Wi-Fi
 								</Card.Title>
 								<Card.Text>Stay connected with high-speed internet access.</Card.Text>
 							</Card.Body>
