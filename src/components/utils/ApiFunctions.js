@@ -89,9 +89,7 @@ export async function bookRoom(roomId, booking) {
 /* This function gets all bokings from the database */
 export async function getAllBookings() {
 	try {
-		const result = await api.get("/bookings/all-bookings", {
-			headers: getHeader()
-		})
+		const result = await api.get("/bookings/all-bookings")
 		return result.data
 	} catch (error) {
 		throw new Error(`Error fetching bookings : ${error.message}`)

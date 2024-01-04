@@ -20,7 +20,7 @@ const BookingForm = () => {
 		checkInDate: "",
 		checkOutDate: "",
 		numberOfAdults: "",
-		numberOfChildren: ""
+		numberOfChildren: 0
 	})
 
 	const [roomInfo, setRoomInfo] = useState({
