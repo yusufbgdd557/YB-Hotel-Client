@@ -5,6 +5,7 @@ import { Form, FormControl, Button } from "react-bootstrap"
 import { bookRoom, getRoomById } from "../utils/ApiFunctions"
 import BookingSummary from "./BookingSummary"
 import { useNavigate, useParams } from "react-router-dom"
+import { useAuth } from "../auth/AuthProvider"
 
 const BookingForm = () => {
 	const [isValidated, setIsValidated] = useState(false)
@@ -21,12 +22,6 @@ const BookingForm = () => {
 		checkOutDate: "",
 		numberOfAdults: "",
 		numberOfChildren: 0
-	})
-
-	const [roomInfo, setRoomInfo] = useState({
-		photo: "",
-		roomType: "",
-		roomPrice: ""
 	})
 
 	const { roomId } = useParams()
