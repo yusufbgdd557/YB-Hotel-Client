@@ -108,13 +108,14 @@ const NavBar = () => {
 	}
 
 	const isLoggedIn = localStorage.getItem("token")
-	const userRole = localStorage.getItem("userRole")
+	const userRole = (localStorage.getItem('userRole') || '').split(',');
+
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
 			<div className="container-fluid">
 				<Link to={"/"} className="navbar-brand">
-					<span className="hotel-color">lakeSide Hotel</span>
+					<span className="hotel-color">YB Hotel</span>
 				</Link>
 
 				<button
@@ -132,11 +133,11 @@ const NavBar = () => {
 					<ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
 						<li className="nav-item">
 							<NavLink className="nav-link" aria-current="page" to={"/browse-all-rooms"}>
-								Browse all rooms
+							Browse All Rooms
 							</NavLink>
 						</li>
 
-						{isLoggedIn && userRole === "ROLE_ADMIN" && (
+						{isLoggedIn && userRole.includes("ROLE_ADMIN") && (
 							<li className="nav-item">
 								<NavLink className="nav-link" aria-current="page" to={"/admin"}>
 									Admin
@@ -148,7 +149,7 @@ const NavBar = () => {
 					<ul className="d-flex navbar-nav">
 						<li className="nav-item">
 							<NavLink className="nav-link" to={"/find-booking"}>
-								Find my booking
+								Find My Booking
 							</NavLink>
 						</li>
 

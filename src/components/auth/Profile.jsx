@@ -12,15 +12,18 @@ const Profile = () => {
 		roles: [{ id: "", name: "" }]
 	})
 
-	const [bookings, setBookings] = useState([
-		{
-			id: "",
-			room: { id: "", roomType: "" },
-			checkInDate: "",
-			checkOutDate: "",
-			bookingConfirmationCode: ""
-		}
-	])
+	// const [bookings, setBookings] = useState([
+	// 	{
+	// 		id: null,
+	// 		room: { id: "", roomType: "" },
+	// 		checkInDate: "",
+	// 		checkOutDate: "",
+	// 		bookingConfirmationCode: ""
+	// 	}
+	// ])
+
+	const [bookings, setBookings] = useState(null)
+
 	const [message, setMessage] = useState("")
 	const [errorMessage, setErrorMessage] = useState("")
 	const navigate = useNavigate()
@@ -150,7 +153,7 @@ const Profile = () => {
 
 							<h4 className="card-title text-center">Booking History</h4>
 
-							{bookings.length > 0 ? (
+							{bookings ? (
 								<table className="table table-bordered table-hover shadow">
 									<thead>
 										<tr>
@@ -164,11 +167,11 @@ const Profile = () => {
 										</tr>
 									</thead>
 									<tbody>
-										{bookings.map((booking, index) => (
+										{bookings && bookings.map((booking, index) => (
 											<tr key={index}>
 												<td>{booking.id}</td>
-												<td>{booking.room.id}</td>
-												<td>{booking.room.roomType}</td>
+												<td>{booking.roomResponse.id}</td>
+												<td>{booking.roomResponse.roomType}</td>
 												<td>
 													{moment(booking.checkInDate).subtract(1, "month").format("MMM Do, YYYY")}
 												</td>
@@ -178,7 +181,7 @@ const Profile = () => {
 														.format("MMM Do, YYYY")}
 												</td>
 												<td>{booking.bookingConfirmationCode}</td>
-												<td className="text-success">On-going</td>
+												<td className="text-success">On-Going</td>
 											</tr>
 										))}
 									</tbody>
@@ -190,7 +193,7 @@ const Profile = () => {
 							<div className="d-flex justify-content-center">
 								<div className="mx-2">
 									<button className="btn btn-danger btn-sm" onClick={handleDeleteAccount}>
-										Close account
+										Close Account
 									</button>
 								</div>
 							</div>

@@ -12,6 +12,7 @@ export const getHeader = () => {
 	}
 }
 
+
 /* This function adds a new room room to the database */
 export async function addRoom(photo, roomType, roomPrice) {
 	const formData = new FormData()
@@ -88,7 +89,9 @@ export async function getRoomById(roomId) {
 /* This function saves a new booking to the database */
 export async function bookRoom(roomId, booking) {
 	try {
-		const response = await api.post(`/bookings/room/${roomId}/booking`, booking)
+		const response = await api.post(`/bookings/room/${roomId}/booking`, booking,{
+			headers: getHeader()
+		})
 		return response.data
 	} catch (error) {
 		if (error.response && error.response.data) {
@@ -114,7 +117,9 @@ export async function getAllBookings() {
 /* This function gets booking by the confirmation code */
 export async function getBookingByConfirmationCode(confirmationCode) {
 	try {
-		const result = await api.get(`/bookings/confirmation/${confirmationCode}`)
+		const result = await api.get(`/bookings/confirmation/${confirmationCode}`, {
+			headers: getHeader()
+		})
 		return result.data
 	} catch (error) {
 		if (error.response && error.response.data) {
@@ -128,7 +133,9 @@ export async function getBookingByConfirmationCode(confirmationCode) {
 /* This is the function to cancel user booking */
 export async function cancelBooking(bookingId) {
 	try {
-		const result = await api.delete(`/bookings/booking/${bookingId}/delete`)
+		const result = await api.delete(`/bookings/booking/${bookingId}/delete`, {
+			headers: getHeader()
+		})
 		return result.data
 	} catch (error) {
 		throw new Error(`Error cancelling booking :${error.message}`)
