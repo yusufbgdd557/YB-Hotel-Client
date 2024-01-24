@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { loginUser } from "../utils/ApiFunctions"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "./AuthProvider"
+import { toast } from "react-toastify"
 
 const Login = () => {
 	const [errorMessage, setErrorMessage] = useState("")
@@ -25,7 +26,8 @@ const Login = () => {
 		if (success) {
 			const token = success.token
 			auth.handleLogin(token)
-			navigate(redirectUrl, { replace: true })
+			navigate(redirectUrl)
+			toast.success("Logged in successfully!")
 		} else {
 			setErrorMessage("Invalid username or password. Please try again.")
 		}

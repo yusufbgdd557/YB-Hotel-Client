@@ -23,7 +23,7 @@ body {
   left: 0;
   right: 0;
   content: '';
-  background-color:rgb(169, 77, 123) ;
+  background-color:rgb(16, 42, 113);
   width: 0;
   margin: 0 auto;
   height: 4px;
@@ -54,11 +54,11 @@ body {
 
   /* Hotel custom color */
  .btn-hotel{
-  background-color: rgb(169, 77, 123);
+  background-color: rgb(16, 42, 113);
   color: #fff;
   }
   .btn-hotel:hover{
-  background-color: rgb(137, 127, 132);
+  background-color: rgb(76, 185, 231);
   color: #fff;
   transition: 0.7s;
   outline-color: transparent;
@@ -67,7 +67,7 @@ body {
   }
 
   .hotel-color{
-    color: rgb(169, 77, 123);
+    color: rgb(16, 42, 113);
   }
   .room-price{
     color:darkgoldenrod;
@@ -189,7 +189,7 @@ body {
 
 /* The header banner */
 .header-banner {
-  background-image:  url("./assets/images/lobby.jpg");
+  background-image:  url("./assets/images/YB.jpeg");
    background-size: cover;
   background-position: center;
    position: relative;

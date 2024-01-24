@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { AuthContext } from "./AuthProvider"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 const Logout = () => {
 	const auth = useContext(AuthContext)
@@ -8,7 +9,8 @@ const Logout = () => {
 
 	const handleLogout = () => {
 		auth.handleLogout()
-		navigate("/", { state: { message: " You have been logged out!" } })
+		navigate("/")
+		toast.info("Logged out successfully!")
 	}
 
 	return (

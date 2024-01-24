@@ -48,7 +48,7 @@ const RoomCarousel = () => {
 													src={`data:image/png;base64, ${room.photo}`}
 													alt="Room Photo"
 													className="w-100"
-													style={{ aspectRatio: 4/3, borderRadius:"8px", border: "3px solid rgb(169, 77, 123)"}}
+													style={{ aspectRatio: 4/3, borderRadius:"8px", border: "3px solid rgb(16, 42, 113)"}}
 												/>
 											</Link>
 											<Card.Body>

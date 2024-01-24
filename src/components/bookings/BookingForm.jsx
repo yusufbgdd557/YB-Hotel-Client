@@ -55,7 +55,7 @@ const BookingForm = () => {
 		const totalCount = adultCount + childrenCount
 		const diffInDays = checkOutDate.diff(checkInDate, "days")
 		const price = roomPrice ? roomPrice : 0
-		return diffInDays * price * totalCount
+		return diffInDays * price
 	}
 
 	const isGuestCountValid = () => {

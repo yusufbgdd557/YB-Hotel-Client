@@ -12,7 +12,7 @@ const RoomCard = ({ room }) => {
 								variant="top"
 								src={`data:image/png;base64, ${room.photo}`}
 								alt="Room Photo"
-								style={{ width: "100%", maxWidth: "200px", height: "auto" , borderRadius:"8px", border: "3px solid rgb(169, 77, 123)"}}
+								style={{ width: "100%", maxWidth: "200px", height: "auto" , borderRadius:"8px", border: "3px solid rgb(16, 42, 113)"}}
 							/>
 						</Link>
 					</div>

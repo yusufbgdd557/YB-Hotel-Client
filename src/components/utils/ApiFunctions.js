@@ -8,7 +8,7 @@ export const getHeader = () => {
 	const token = localStorage.getItem("token")
 	return {
 		Authorization: `Bearer ${token}`,
-		"Content-Type": "application/json"
+		 "Content-Type": "multipart/form-data"
 	}
 }
 
@@ -70,8 +70,10 @@ export async function updateRoom(roomId, roomData) {
 	formData.append("roomType", roomData.roomType)
 	formData.append("roomPrice", roomData.roomPrice)
 	formData.append("photo", roomData.photo)
+	const headers = getHeader()
+	headers['Content-Type'] = "multipart/form-data"
 	const response = await api.put(`/rooms/update/${roomId}`, formData,{
-		headers: getHeader()
+		headers,
 	})
 	return response
 }
@@ -226,5 +228,21 @@ export async function getBookingsByUserId(userId, token) {
 	} catch (error) {
 		console.error("Error fetching bookings:", error.message)
 		throw new Error("Failed to fetch bookings")
+	}
+}
+
+/* This function updates users password */
+export async function changePassword(email, currentPassword, newPassword) {
+	try {
+		const response = await api.post("/users/change-password", {email, currentPassword, newPassword}, {
+			headers: getHeader()
+		})
+		return response.data
+	} catch (error) {
+		if (error.reeponse && error.response.data) {
+			throw new Error(error.response.data)
+		} else {
+			throw new Error(`Failed to change password : ${error.message}`)
+		}
 	}
 }
