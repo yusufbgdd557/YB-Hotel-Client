@@ -110,10 +110,14 @@ const FindBooking = () => {
                         <p><strong>Full Name :</strong> {bookingInfo.guestFullName}</p>
                         <p><strong> Email Address : </strong> {bookingInfo.guestEmail}</p>
                         <p>
-                            <strong> Check-In Date : </strong> {moment(bookingInfo.checkInDate).format("MMM Do YYYY")}
+                            <strong> Check-In Date : </strong> {moment(bookingInfo.checkInDate)
+                              .subtract(1, "month")
+                              .format("MMM Do, YYYY")}
                         </p>
                         <p>
-                            <strong> Check-Out Date : </strong> {moment(bookingInfo.checkOutDate).format("MMM Do YYYY")}
+                            <strong> Check-Out Date : </strong> {moment(bookingInfo.checkOutDate)
+                              .subtract(1, "month")
+                              .format("MMM Do, YYYY")}
                         </p>
                         <p><strong>Room Number :</strong> {bookingInfo.roomResponse.id}</p>
                         <p><strong>Room Type : </strong> {bookingInfo.roomResponse.roomType}</p>

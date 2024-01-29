@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { changePassword } from "../utils/ApiFunctions";
+import { toast } from "react-toastify";
 
 const PasswordChangePopUp = ({ show, handleClose, email }) => {
   const [formData, setFormData] = useState({
@@ -31,8 +32,17 @@ const PasswordChangePopUp = ({ show, handleClose, email }) => {
   };
 
   const handleSave = async () => {
-   await changePassword(email, formData.currentPassword, formData.newPassword);
-    handleClose();
+    try {
+      await changePassword(
+        email,
+        formData.currentPassword,
+        formData.newPassword
+      );
+      handleClose();
+      toast.success("Password updated successfuly!")
+    } catch {
+      toast.error("Something went wrong!");
+    }
   };
 
   return (
@@ -99,7 +109,8 @@ const PasswordChangePopUp = ({ show, handleClose, email }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="btn btn-danger"
+        <Button
+          className="btn btn-danger"
           variant="secondary"
           onClick={() => {
             setFormData({
