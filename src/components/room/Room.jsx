@@ -33,6 +33,8 @@ const Room = () => {
 		return <div className=" text-danger">Error : {error}</div>
 	}
 
+	console.log(data)
+	
 	const handlePageChange = (pageNumber) => {
 		setCurrentPage(pageNumber)
 	}

@@ -8,20 +8,22 @@ export const getHeader = () => {
 	const token = localStorage.getItem("token")
 	return {
 		Authorization: `Bearer ${token}`,
-		 "Content-Type": "multipart/form-data"
+		 "Content-Type": "application/json"
 	}
 }
 
 
 /* This function adds a new room room to the database */
-export async function addRoom(photo, roomType, roomPrice) {
+export async function addRoom(photo, roomType, roomPrice, roomDescription) {
 	const formData = new FormData()
 	formData.append("photo", photo)
 	formData.append("roomType", roomType)
 	formData.append("roomPrice", roomPrice)
-
+	formData.append("roomDescription", roomDescription)
+	const headers = getHeader()
+	headers['Content-Type'] = "multipart/form-data"
 	const response = await api.post("/rooms/add/new-room", formData,{
-		headers: getHeader()
+		headers,
 	})
 	if (response.status === 201) {
 		return true
@@ -70,6 +72,7 @@ export async function updateRoom(roomId, roomData) {
 	formData.append("roomType", roomData.roomType)
 	formData.append("roomPrice", roomData.roomPrice)
 	formData.append("photo", roomData.photo)
+	formData.append("roomDescription", roomData.roomDescription)
 	const headers = getHeader()
 	headers['Content-Type'] = "multipart/form-data"
 	const response = await api.put(`/rooms/update/${roomId}`, formData,{
